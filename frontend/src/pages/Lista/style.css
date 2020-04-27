@@ -1,0 +1,16 @@
+.container-lista  {
+    padding: 0 30px;
+    width: 100%;
+    max-width: auto;
+}
+
+.content {
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.content .tabela th {
+    border: 1px solid black;
+    padding: 8px 15px;
+}

@@ -1,0 +1,25 @@
+header {
+    width: 100%;
+    max-width: auto;
+    background: #CA6262;
+    justify-content: center;
+    padding: 10px;
+}
+
+.sessao{
+    float: left;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: -10px;
+}
+
+.titulo-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-header h1 {
+    font-size: 38px;
+    text-align: center;
+}

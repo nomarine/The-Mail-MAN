@@ -1,0 +1,19 @@
+.menu-principal-container {
+    width: 100%;
+    max-width: 720px;
+    padding: 0 30px;
+    margin: 42px auto;
+}
+
+li {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+a {
+
+}
+
+a:hover {
+    cursor: pointer;
+}
