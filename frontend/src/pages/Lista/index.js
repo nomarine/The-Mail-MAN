@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import api from '../../services/api';
 
 import './style.css';
 
 export default function Lista() {
+    const [correspondencias, setCorrespondencias] = useState([]);
+
+    useEffect(() => {
+        api.get('correspondencias').then(response => {
+            setCorrespondencias(response.data.correspondencias);
+        });
+    }, []);
+
+    function verificarEntrega(correspondencia){
+        if(correspondencia != null) {
+            return "Entregue"
+        }
+        else {
+            return (
+                <Link to='/'>
+                    <p>Receber</p>
+                </Link>
+            )
+        }
+    };
+
     return (
         <div className="container-lista">
 
@@ -18,33 +41,22 @@ export default function Lista() {
             </div>
 
             <div className='content'>
-            
-                <td className='tabela'>
+                <tbody className='tabela'>
                     <tr className='linha-titulo'>
                         <th>Remetente</th>
                         <th>Destinatário</th>
                         <th>Descrição</th>
                         <th>Status</th>
                     </tr>
-                    <tr>
-                        <th>Daniel Moura</th>
-                        <th>PMT</th>
-                        <th>Ret. Área 213</th>
-                        <th>Entregue</th>
-                    </tr>
-                    <tr>
-                        <th>Rafael Fijos</th>
-                        <th>Escriba</th>
-                        <th>Replicação física</th>
-                        <th>Receber</th>
-                    </tr>
-                    <tr>
-                        <th>Sabrina Chaves</th>
-                        <th>MDR Contabilidade</th>
-                        <th>Ata de Reunião Jacarandá</th>
-                        <th>Receber</th>
-                    </tr>
-                </td>
+                        {correspondencias.map(correspondencia => (
+                            <tr key={correspondencia.id}>
+                                <th>{correspondencia.remetente}</th>
+                                <th>{correspondencia.destinatario}</th>
+                                <th>{correspondencia.descricao}</th>
+                                <th>{verificarEntrega(correspondencia.datahora_entrega)}</th>
+                            </tr>
+                        ))}
+                </tbody>
             </div>
         </div>
     )
