@@ -43,16 +43,22 @@ export default function Lista() {
             <div className='content'>
                 <tbody className='tabela'>
                     <tr className='linha-titulo'>
+                        <th>Número de Identificação</th>
                         <th>Remetente</th>
                         <th>Destinatário</th>
                         <th>Descrição</th>
+                        <th>Responsável</th>
+                        <th>Data do Cadastro</th>
                         <th>Status</th>
                     </tr>
                         {correspondencias.map(correspondencia => (
                             <tr key={correspondencia.id}>
+                                <th>{correspondencia.id}</th>
                                 <th>{correspondencia.remetente}</th>
                                 <th>{correspondencia.destinatario}</th>
                                 <th>{correspondencia.descricao}</th>
+                                <th>{correspondencia.cadastro_usuario_id.nome}</th>
+                                <th>{correspondencia.datahora_cadastro}</th>
                                 <th>{verificarEntrega(correspondencia.datahora_entrega)}</th>
                             </tr>
                         ))}

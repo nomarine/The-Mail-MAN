@@ -2,8 +2,7 @@ const connection = require('../database/connection');
 
 module.exports = {
     async create(request, response) {
-        const { remetente, destinatario, descricao } = request.body;
-        const cadastro_usuario_id = request.headers.authorization;
+        const { remetente, destinatario, descricao, cadastro_usuario_id } = request.body;
 
         await connection('correspondencias').insert({
             cadastro_usuario_id,
