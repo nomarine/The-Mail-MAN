@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import './style.css';
 import api from '../../services/api';
@@ -9,13 +9,15 @@ export default function Cadastro() {
     const [destinatario, setDestinatario] = useState('');
     const [descricao, setDescricao] = useState('');
     const [data, setData] = useState('');
+
+    const history = useHistory();
     
     let hoje = new Date().toISOString().substr(0, 10);
 
     async function cadastrarCorrespondencia(e) {
         e.preventDefault();
 
-        let cadastro_usuario_id = 1;
+        const cadastro_usuario_id = 1;
 
         const dados = {
             cadastro_usuario_id,
@@ -27,10 +29,10 @@ export default function Cadastro() {
 
         try {
             const resposta = await api.post('correspondencias', dados);
-
-            alert(`Correspondência ${resposta.dados.id} cadastrada com sucesso!`);
+            alert(`Correspondência ${resposta.data.id} cadastrada com sucesso!`);
+            history.push('/lista');
         } catch (err) {
-            alert('Ops, algo deu errado. Reveja os dados e tente novamente.');
+            alert('Ops, algo deu errado. Reveja os dados e tente novamente.');            
         }
 
     }

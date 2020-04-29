@@ -4,26 +4,24 @@ module.exports = {
     async create(request, response) {
         const { remetente, destinatario, descricao, cadastro_usuario_id } = request.body;
 
-        await connection('correspondencias').insert({
+        const [id] =  await connection('correspondencias').insert({
             cadastro_usuario_id,
             remetente,
             destinatario,
             descricao,
         })
 
-        const cadastro = await connection('correspondencias').max('id');
-
-        return response.json({cadastro});
+        return response.json({id});
     },
 
     async index(request, response) {
         const { page = 1 } = request.query;
 
         const correspondencias = await connection('correspondencias')
-            .join('usuarios')
-            .limit(15)
-            .offset((page - 1) * 15)
-            .select('correspondencias.*', 'usuarios.nome as cadastrado_pelo_usuario');
+            .join('usuarios').select('correspondencias.*', 'usuarios.nome as cadastrado_pelo_usuario');
+            //.limit(15)
+            //.offset((page - 1) * 15)
+            
 
         return response.json({ correspondencias });
     },

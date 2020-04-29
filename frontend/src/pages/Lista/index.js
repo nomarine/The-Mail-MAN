@@ -27,6 +27,10 @@ export default function Lista() {
         }
     };
 
+    async function deletarCorrespondencia(correspondencia){
+        const resposta = await api.delete();
+    }
+
     return (
         <div className="container-lista">
 
@@ -51,13 +55,13 @@ export default function Lista() {
                         <th>Data do Cadastro</th>
                         <th>Status</th>
                     </tr>
-                        {correspondencias.map(correspondencia => (
+                        {correspondencias.slice(0).reverse().map(correspondencia => (
                             <tr key={correspondencia.id}>
                                 <th>{correspondencia.id}</th>
                                 <th>{correspondencia.remetente}</th>
                                 <th>{correspondencia.destinatario}</th>
                                 <th>{correspondencia.descricao}</th>
-                                <th>{correspondencia.cadastro_usuario_id.nome}</th>
+                                <th>{correspondencia.cadastrado_pelo_usuario}</th>
                                 <th>{correspondencia.datahora_cadastro}</th>
                                 <th>{verificarEntrega(correspondencia.datahora_entrega)}</th>
                             </tr>
