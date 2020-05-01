@@ -17,7 +17,7 @@ export default function Cadastro() {
     async function cadastrarCorrespondencia(e) {
         e.preventDefault();
 
-        const cadastro_usuario_id = 1;
+        const cadastro_usuario_id = localStorage.getItem('usuario_id');
 
         const dados = {
             cadastro_usuario_id,
@@ -28,7 +28,11 @@ export default function Cadastro() {
         };
 
         try {
-            const resposta = await api.post('correspondencias', dados);
+            const resposta = await api.post('correspondencias', dados, {
+                headers: {
+                    Authorization: cadastro_usuario_id
+                }
+            });
             alert(`Correspondência ${resposta.data.id} cadastrada com sucesso!`);
             history.push('/lista');
         } catch (err) {

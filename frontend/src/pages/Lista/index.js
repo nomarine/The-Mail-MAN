@@ -28,7 +28,7 @@ export default function Lista() {
     };
 
     async function deletarCorrespondencia(correspondencia){
-        const resposta = await api.delete();
+        const resposta = await api.delete('correspondencias');
     }
 
     return (
