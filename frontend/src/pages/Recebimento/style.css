@@ -1,0 +1,24 @@
+.container-recebimento {
+    padding: 0 30px;
+    margin: auto auto;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+}
+
+.container-recebimento .content {
+    width: 100%;
+    max-width: 680px;
+    padding: 50px;
+    box-shadow: 0 0 10px #000;
+    border-radius: 0px;
+    
+    justify-content: space-between;
+}
+
+.cadastro-container .content label {
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    margin-bottom: 5px;
+}

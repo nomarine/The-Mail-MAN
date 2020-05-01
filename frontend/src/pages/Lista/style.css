@@ -8,6 +8,7 @@
     display: flex;
     margin-top: 15px;
     justify-content: center;
+    margin-bottom: 5%;
 }
 
 .content .tabela th {

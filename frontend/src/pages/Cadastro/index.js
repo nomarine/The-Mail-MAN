@@ -17,7 +17,7 @@ export default function Cadastro() {
     async function cadastrarCorrespondencia(e) {
         e.preventDefault();
 
-        const cadastro_usuario_id = localStorage.getItem('usuario_id');
+        const cadastro_usuario_id = localStorage.getItem('user_id');
 
         const dados = {
             cadastro_usuario_id,

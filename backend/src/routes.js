@@ -12,6 +12,7 @@ routes.put('/usuarios/:id', UsuariosController.update);
 
 routes.post('/correspondencias', CorrespondenciasController.create);
 routes.get('/correspondencias', CorrespondenciasController.index);
+routes.get('/correspondencias/:id', CorrespondenciasController.single_index);
 routes.delete('/correspondencias/:id', CorrespondenciasController.delete);
 
 module.exports = routes;

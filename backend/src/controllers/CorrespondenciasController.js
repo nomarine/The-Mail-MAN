@@ -17,15 +17,30 @@ module.exports = {
     },
 
     async index(request, response) {
-        const { page = 1 } = request.query;
+        //const { page = 1 } = request.query;
 
         const correspondencias = await connection('correspondencias')
-            .join('usuarios').select('correspondencias.*', 'usuarios.nome as cadastrado_pelo_usuario');
+            .join('usuarios', 'correspondencias.cadastro_usuario_id', '=', 'usuarios.id')
+            .select('correspondencias.*', 'usuarios.nome as usuario_cadastro');
             //.limit(15)
             //.offset((page - 1) * 15)
             
 
         return response.json({ correspondencias });
+    },
+
+    async single_index(request, response) {
+        const { id } = request.params;
+
+        const correspondencia = await connection('correspondencias')
+            //.join('usuarios', 'correspondencias.cadastro_usuario_id', '=', 'usuarios.id')
+            .where('correspondencias.id', '=', id)
+            .select('correspondencias.*');
+            //.limit(15)
+            //.offset((page - 1) * 15)
+            
+
+        return response.json({ correspondencia });
     },
 
     async delete(request, response) {
