@@ -55,5 +55,15 @@ module.exports = {
         await connection('correspondencias').where('id', id).delete();
 
         return response.status(204).send();
-    }
+    },
+
+    async update(request, response) {
+        const { id } = request.params;
+
+        const { datahora_entrega, id_usuario_entrega } = request.body;
+
+        await connection('usuarios').where('id', id).update({'datahora_entrega': datahora_entrega,  'entrega_usuario_id': id_usuario_entrega });
+
+        return response.status(204).send();
+    },
 }

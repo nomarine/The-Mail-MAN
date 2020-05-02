@@ -1,12 +1,4 @@
-.container-recebimento {
-    padding: 0 30px;
-    margin: auto auto;
-    align-self: center;
-    align-content: center;
-    align-items: center;
-}
-
-.container-recebimento .content {
+.container-recebimento .ficha {
     width: 100%;
     max-width: 680px;
     padding: 50px;
@@ -16,9 +8,20 @@
     justify-content: space-between;
 }
 
-.cadastro-container .content label {
+.container-recebimento .ficha label {
     font-size: 15px;
     font-weight: 500;
     display: flex;
     margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+input {
+    width: 70%;
+    height: 40px;
+    color: #333;
+    border: 1px solid #dcdce6;
+    border-radius: 8px;
+    padding: 0 15px;
+    margin-bottom: 12px;
 }

@@ -13,7 +13,7 @@ export default function Routes() {
                 <Route path="/" exact component={MenuPrincipal}/>
                 <Route path="/cadastro" component={Cadastro}/>
                 <Route path="/lista" component={Lista}/>
-                <Route path="/recebimento" component={Recebimento}/>
+                <Route path="/recebimento/:id" component={Recebimento}/>
             </Switch>
         </BrowserRouter>
     )

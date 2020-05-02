@@ -14,5 +14,6 @@ routes.post('/correspondencias', CorrespondenciasController.create);
 routes.get('/correspondencias', CorrespondenciasController.index);
 routes.get('/correspondencias/:id', CorrespondenciasController.single_index);
 routes.delete('/correspondencias/:id', CorrespondenciasController.delete);
+routes.put('/correspondencias/:id', CorrespondenciasController.update);
 
 module.exports = routes;

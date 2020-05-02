@@ -20,7 +20,7 @@ export default function Lista() {
         }
         else {
             return (
-                <Link to='/recebimento/'>
+                <Link to={`/recebimento/${correspondencia.id}`}>
                     <p>Receber</p>
                 </Link>
             )
