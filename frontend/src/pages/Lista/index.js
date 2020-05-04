@@ -65,7 +65,7 @@ export default function Lista() {
                         <th>Remetente</th>
                         <th>Destinatário</th>
                         <th>Descrição</th>
-                        <th>Responsável</th>
+                        <th>Entregue para</th>
                         <th>Data do Cadastro</th>
                         <th>Status</th>
                     </tr>

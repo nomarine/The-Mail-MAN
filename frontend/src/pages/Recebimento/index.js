@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 
@@ -9,6 +9,8 @@ export default function Recebimento() {
     const [correspondencia, setCorrespondencia] = useState([]);
     const [usuario_entrega, setUsuario_entrega] = useState('');
     const {id} = useParams();
+
+    const history = useHistory();
 
     useEffect(() => {
         api.get(`/correspondencias/${id}`).then(response => {
@@ -25,14 +27,15 @@ export default function Recebimento() {
         const id_usuario_entrega = "302feee9"
 
         const dados = {
-            id_usuario_entrega,
             datahora_entrega,
+            id_usuario_entrega,
         }
 
         try {
-            const resposta = await api.put(`correspondencias/${id}`, dados);
+            await api.put(`correspondencias/${id}`, dados);
 
-            alert(`Correspondência de número ${resposta.data.id} recebida com êxito!`);
+            alert(`Correspondência de número ${id} recebida com êxito!`);
+            history.push('/lista');
         } catch (err) {
             alert(`Não foi possível confirmar o recebimento da correspondência.`)
         }
@@ -78,7 +81,7 @@ export default function Recebimento() {
 
                 <button 
                     className='botao' 
-                    onClick={() => confirmarRecebimento}>
+                    onClick={confirmarRecebimento}>
                         Receber
                 </button>
              </div>
