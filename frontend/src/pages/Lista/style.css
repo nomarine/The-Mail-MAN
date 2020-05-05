@@ -15,3 +15,16 @@
     border: 1px solid black;
     padding: 8px 15px;
 }
+
+.icone {
+    margin-left: 5px;
+}
+
+.icone-home {
+    margin-right: 5px;
+}
+
+.opcao {
+    margin-top: 10px;
+    margin-left: 10px;
+}

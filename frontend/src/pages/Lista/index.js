@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FaTrash, FaHome, FaUserCheck } from 'react-icons/fa';
 
 import api from '../../services/api';
 
@@ -16,7 +17,9 @@ export default function Lista() {
 
     function verificarEntrega(correspondencia){
         if(correspondencia.datahora_entrega != null) {
-            return "Entregue"
+            return (
+                <span>Entregue<FaUserCheck className='icone'/></span>
+            )
         }
         else {
             return (
@@ -50,7 +53,7 @@ export default function Lista() {
 
             <div className='header'>
                 <Link to='/'>
-                    <span className='comando'>Retornar ao menu principal</span>
+                    <span className='comando'><FaHome className='icone-home'/>Retornar ao menu principal</span>
                 </Link>
             </div>
 
@@ -79,8 +82,8 @@ export default function Lista() {
                                 <th>{correspondencia.datahora_cadastro}</th>
                                 <th>
                                     {verificarEntrega(correspondencia)}
-                                    <span onClick={() => deletarCorrespondencia(correspondencia.id)}>Deletar</span>
                                 </th>
+                                <div className='opcao'><Link onClick={() => deletarCorrespondencia(correspondencia.id)}>Deletar<FaTrash className='icone'/></Link></div>
                             </tr>
                         ))}
                 </tbody>
